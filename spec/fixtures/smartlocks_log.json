@@ -1,0 +1,26 @@
+[
+  {
+    "id": "string",
+    "smartlockId": 0,
+    "deviceType": 0,
+    "accountUserId": 0,
+    "authId": "string",
+    "name": "string",
+    "action": 255,
+    "trigger": 255,
+    "state": 255,
+    "autoUnlock": true,
+    "date": "2025-02-04T21:30:58.757Z",
+    "openerLog": {
+      "activeCm": true,
+      "activeRto": true,
+      "source": 6,
+      "flagGeoFence": true,
+      "flagForce": true,
+      "flagDoorbellSuppression": true
+    },
+    "ajarTimeout": 0,
+    "source": 0,
+    "error": "string"
+  }
+]

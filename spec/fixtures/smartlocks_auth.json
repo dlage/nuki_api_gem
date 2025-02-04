@@ -1,0 +1,39 @@
+[
+  {
+    "id": "string",
+    "smartlockId": 0,
+    "accountUserId": 0,
+    "authId": 0,
+    "code": 0,
+    "fingerprints": {
+      "additionalProp1": "string",
+      "additionalProp2": "string",
+      "additionalProp3": "string"
+    },
+    "type": 2,
+    "name": "string",
+    "enabled": true,
+    "remoteAllowed": true,
+    "lockCount": 0,
+    "allowedFromDate": "2025-02-04T21:41:59.891Z",
+    "allowedUntilDate": "2025-02-04T21:41:59.891Z",
+    "allowedWeekDays": 127,
+    "allowedFromTime": 0,
+    "allowedUntilTime": 0,
+    "lastActiveDate": "2025-02-04T21:41:59.891Z",
+    "creationDate": "2025-02-04T21:41:59.891Z",
+    "updateDate": "2025-02-04T21:41:59.891Z",
+    "operationId": {
+      "timestamp": 0,
+      "counter": 0,
+      "time": 0,
+      "date": "2025-02-04T21:41:59.891Z",
+      "machineIdentifier": 0,
+      "processIdentifier": 0,
+      "timeSecond": 0
+    },
+    "error": "string",
+    "appId": 0,
+    "authTypeAsString": "string"
+  }
+]
