@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe NukiApi, 'smartlocks' do
   let(:request_path) { '/smartlock' }
-  let(:body) { fixture('smartlock.json') }
+  let(:body) { fixture('smartlocks.json') }
   let(:status) { 200 }
 
   before do

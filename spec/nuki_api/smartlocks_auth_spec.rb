@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe NukiApi, 'listings' do
   describe 'smartlocks_auth' do
     let(:request_path) { '/smartlock/log' }
-    let(:body) { fixture('smartlock_log.json') }
+    let(:body) { fixture('smartlocks_log.json') }
     let(:status) { 200 }
 
     before do
