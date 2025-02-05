@@ -21,6 +21,7 @@ GEM
       bigdecimal
       rexml
     diff-lcs (1.5.1)
+    dotenv (2.8.1)
     dry-configurable (0.16.1)
       dry-core (~> 0.6)
       zeitwerk (~> 2.6)
@@ -86,6 +87,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  dotenv (~> 2.5)
   nuki_api!
   rake (~> 13.0)
   rspec (~> 3.0)

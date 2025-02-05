@@ -19,8 +19,8 @@ RSpec.describe NukiApi, 'listings' do
     it 'each listing has basic information', :vcr do
       smartlocks_log_response.each do |l|
         expect(l).to have_key(:id)
-        expect(l).to have_key(:smartlock_id)
-        expect(l).to have_key(:device_type)
+        expect(l).to have_key(:smartlockId)
+        expect(l).to have_key(:deviceType)
       end
     end
   end
