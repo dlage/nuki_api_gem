@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe NukiApi, 'listings' do
+RSpec.describe NukiApi, 'smartlocks_auth' do
   describe 'smartlocks_auth' do
     let(:request_path) { '/smartlock/auth' }
     let(:body) { fixture('smartlocks_auth.json') }
@@ -16,11 +16,28 @@ RSpec.describe NukiApi, 'listings' do
     it 'returns correctly some data', :vcr do
       expect(smartlocks_auth_response).to be_kind_of(Array)
     end
-    it 'each listing has basic information', :vcr do
+    it 'each smartlock has basic information', :vcr do
       smartlocks_auth_response.each do |l|
         expect(l).to have_key(:id)
         expect(l).to have_key(:smartlockId)
       end
+    end
+  end
+end
+RSpec.describe NukiApi, 'smartlocks_auth_create' do
+  describe 'smartlocks_auth_create' do
+    let(:request_path) { '/smartlock/auth' }
+    let(:params) { fixture('smartlocks_auth_create_request.json') }
+    let(:response) { fixture('smartlocks_auth_create_response.json') }
+    let(:status) { 204 }
+
+    before do
+      stub_put(request_path).to_return(body: response, status: status)
+    end
+
+    let(:smartlock_auth_create_response) { NukiApi::Client.new.smartlock_auth_create(params: params) }
+    it 'returns correctly empty data', :vcr do
+      expect(smartlock_auth_create_response).to be_nil
     end
   end
 end

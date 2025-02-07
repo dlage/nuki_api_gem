@@ -43,6 +43,16 @@ module NukiApi
       process_response(response)
     end
 
+    def smartlock_auth_create(params = {})
+      response = request(
+        http_method: :put,
+        endpoint: 'smartlock/auth',
+        params: params,
+        cache_ttl: 5 # Prevent "double click" for 5 seconds
+      )
+      process_response(response)
+    end
+
     def smartlock(smartlock_id, global_params = {})
       response = request(
         http_method: :get,

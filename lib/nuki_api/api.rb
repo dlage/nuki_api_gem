@@ -95,15 +95,21 @@ module NukiApi
       client.headers['User-Agent'] = config.user_agent
     end
 
-    def request(http_method:, endpoint:, params: {}, cache_ttl: 3600)
+    def request(http_method:, endpoint:, params: {}, query_params: {}, cache_ttl: 3600)
       response = APICache.get(
         Digest::SHA256.bubblebabble(config.token) + http_method.to_s + endpoint + params.to_s,
         cache: cache_ttl,
         valid: config.stale_validity,
         timeout: config.timeout
       ) do
-        client.public_send(http_method, endpoint, params)
+        client.public_send(http_method, endpoint) do |req|
+          req.headers['Content-Type'] = 'application/json'
+          req.params = query_params
+          req.body = params.to_json if params.size
+        end
       end
+      logger = Logger.new $stderr
+      logger.debug("Response: #{response.body}")
 
       process_http_response(response)
     end
@@ -123,7 +129,7 @@ module NukiApi
     end
 
     def response_successful?(response)
-      response.status == HTTP_OK_CODE
+      response.status == HTTP_OK_CODE || response.status == HTTP_NO_CONTENT
     end
   end
 end
