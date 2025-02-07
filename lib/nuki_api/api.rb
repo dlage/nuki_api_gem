@@ -102,16 +102,18 @@ module NukiApi
         valid: config.stale_validity,
         timeout: config.timeout
       ) do
-        client.public_send(http_method, endpoint) do |req|
-          req.headers['Content-Type'] = 'application/json'
-          req.params = query_params
-          req.body = params.to_json if params.size
-        end
+        request_send(client, http_method, endpoint, query_params: query_params, params: params)
       end
-      logger = Logger.new $stderr
-      logger.debug("Response: #{response.body}")
 
       process_http_response(response)
+    end
+
+    def request_send(client, http_method, endpoint, query_params: {}, params: {})
+      client.public_send(http_method, endpoint) do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.params = query_params
+        req.body = params.to_json if params.size
+      end
     end
 
     def process_http_response(response)
