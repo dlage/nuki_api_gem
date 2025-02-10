@@ -56,7 +56,8 @@ module NukiApi
     # allowedWeekDays	integer($int32)
     # minimum: 0
     # maximum: 127
-    # The allowed weekdays bitmask: 64 .. monday, 32 .. tuesday, 16 .. wednesday, 8 .. thursday, 4 .. friday, 2 .. saturday, 1 .. sunday
+    # The allowed weekdays bitmask: 64 .. monday, 32 .. tuesday, 16 .. wednesday, 8 .. thursday, 4 .. friday,
+    #                               2 .. saturday, 1 .. sunday
     #
     # allowedFromTime	integer($int32)
     # The allowed from time (in minutes from midnight)
