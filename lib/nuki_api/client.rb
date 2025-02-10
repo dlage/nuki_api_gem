@@ -43,6 +43,43 @@ module NukiApi
       process_response(response)
     end
 
+    # SmartlockAuthCreate{
+    # name*	string
+    # The name of the authorization (max 32 chars)
+    #
+    # allowedFromDate	string($date-time)
+    # The allowed from date
+    #
+    # allowedUntilDate	string($date-time)
+    # The allowed until date
+    #
+    # allowedWeekDays	integer($int32)
+    # minimum: 0
+    # maximum: 127
+    # The allowed weekdays bitmask: 64 .. monday, 32 .. tuesday, 16 .. wednesday, 8 .. thursday, 4 .. friday, 2 .. saturday, 1 .. sunday
+    #
+    # allowedFromTime	integer($int32)
+    # The allowed from time (in minutes from midnight)
+    #
+    # allowedUntilTime	integer($int32)
+    # The allowed until time (in minutes from midnight)
+    #
+    # accountUserId	integer($int32)
+    # The id of the linked account user (required if type is NOT 13 .. keypad)
+    #
+    # remoteAllowed*	boolean
+    # True if the auth has remote access
+    #
+    # smartActionsEnabled	boolean
+    # The smart actions enabled flag
+    #
+    # type	integer($int32)
+    # The optional type of the auth 0 .. app (default), 2 .. fob, 13 .. keypad
+    #
+    # code	integer($int32)
+    # The code of the keypad authorization (only for keypad)
+    #
+    # }
     def smartlock_auth_create(params = {})
       response = request(
         http_method: :put,
