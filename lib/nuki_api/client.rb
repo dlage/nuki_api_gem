@@ -95,7 +95,7 @@ module NukiApi
       response = request(
         http_method: :get,
         endpoint: "smartlock/#{smartlock_id}",
-        params: global_params
+        query_params: global_params
       )
       process_response(response)
     end
@@ -104,7 +104,7 @@ module NukiApi
       response = request(
         http_method: :get,
         endpoint: "smartlock/#{smartlock_id}/log",
-        params: global_params
+        query_params: global_params
       )
       process_response(response)
     end
@@ -113,18 +113,7 @@ module NukiApi
       response = request(
         http_method: :get,
         endpoint: "smartlock/#{smartlock_id}/auth",
-        params: global_params
-      )
-      process_response(response)
-    end
-
-    # NukiApi::Client.new.search(query)
-    def search(query, type = nil, global_params = {})
-      response = request(
-        http_method: :get,
-        endpoint: 'search',
-        params: { q: query, type: type }.merge!(global_params),
-        cache_ttl: 3600 * 24
+        query_params: global_params
       )
       process_response(response)
     end
