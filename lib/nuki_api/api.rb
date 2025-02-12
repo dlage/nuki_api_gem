@@ -97,7 +97,7 @@ module NukiApi
 
     def request(http_method:, endpoint:, params: {}, query_params: {}, cache_ttl: 3600)
       response = APICache.get(
-        Digest::SHA256.bubblebabble(config.token) + http_method.to_s + endpoint + params.to_s,
+        Digest::SHA256.bubblebabble(config.token) + http_method.to_s + endpoint + query_params.to_s + params.to_s,
         cache: cache_ttl,
         valid: config.stale_validity,
         timeout: config.timeout

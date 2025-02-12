@@ -81,7 +81,7 @@ module NukiApi
     # The code of the keypad authorization (only for keypad)
     #
     # }
-    def smartlock_auth_create(params = {})
+    def smartlocks_auth_create(params = {})
       response = request(
         http_method: :put,
         endpoint: 'smartlock/auth',
@@ -114,6 +114,16 @@ module NukiApi
         http_method: :get,
         endpoint: "smartlock/#{smartlock_id}/auth",
         query_params: global_params
+      )
+      process_response(response)
+    end
+
+    def smartlock_auth_create(smartlock_id, params = {})
+      response = request(
+        http_method: :put,
+        endpoint: "smartlock/#{smartlock_id}/auth",
+        params: params,
+        cache_ttl: 5 # Prevent "double click" for 5 seconds
       )
       process_response(response)
     end
