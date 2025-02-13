@@ -96,16 +96,16 @@ module NukiApi
     end
 
     def request(http_method:, endpoint:, params: {}, query_params: {}, cache_ttl: 3600)
-      response = APICache.get(
-        Digest::SHA256.bubblebabble(config.token) + http_method.to_s + endpoint + query_params.to_s + params.to_s,
-        cache: cache_ttl,
-        valid: config.stale_validity,
-        timeout: config.timeout
-      ) do
+      cache_key = build_cache_key(http_method, endpoint, query_params, params)
+      response = APICache.get(cache_key, cache: cache_ttl, valid: config.stale_validity, timeout: config.timeout) do
         request_send(client, http_method, endpoint, query_params: query_params, params: params)
       end
 
       process_http_response(response)
+    end
+
+    def build_cache_key(http_method, endpoint, query_params, params)
+      Digest::SHA256.bubblebabble(config.token) + http_method.to_s + endpoint + query_params.to_s + params.to_s
     end
 
     def request_send(client, http_method, endpoint, query_params: {}, params: {})
