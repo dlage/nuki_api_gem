@@ -34,7 +34,7 @@ module NukiApi
       )
       process_response(response)
     end
-    
+
     def smartlocks_auth(global_params = {})
       response = request(
         http_method: :get,
