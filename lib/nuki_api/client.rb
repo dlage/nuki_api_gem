@@ -91,6 +91,25 @@ module NukiApi
       process_response(response)
     end
 
+    def smartlocks_auth(global_params = {})
+      response = request(
+        http_method: :get,
+        endpoint: "smartlock/auth",
+        query_params: global_params
+      )
+      process_response(response)
+    end
+
+    def smartlocks_auth_delete(auth_ids)
+      response = request(
+        http_method: :delete,
+        endpoint: "smartlock/auth",
+        params: auth_ids,
+        cache_ttl: 5 # Prevent "double click" for 5 seconds
+      )
+      process_response(response)
+    end
+
     def smartlock(smartlock_id, global_params = {})
       response = request(
         http_method: :get,

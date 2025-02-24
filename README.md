@@ -26,7 +26,10 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 ```ruby
-client = NukiApi::Client.new
+client = NukiApi::Client.new(token: 'API_TOKEN')
+smartlocks = client.smartlocks
+smartlock = smartlocks[0]
+smartlock_auth_create
 ```
 
 ## Development
