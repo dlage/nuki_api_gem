@@ -95,7 +95,7 @@ module NukiApi
       client.headers['User-Agent'] = config.user_agent
     end
 
-    def request(http_method:, endpoint:, params: {}, query_params: {}, cache_ttl: 3600)
+    def request(http_method:, endpoint:, params: {}, query_params: {}, cache_ttl: 1800)
       cache_key = build_cache_key(http_method, endpoint, query_params, params)
       response = APICache.get(cache_key, cache: cache_ttl, valid: config.stale_validity, timeout: config.timeout) do
         request_send(client, http_method, endpoint, query_params: query_params, params: params)
